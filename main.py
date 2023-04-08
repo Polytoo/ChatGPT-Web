@@ -48,7 +48,7 @@ def get_response_from_ChatGPT_API(message_context, apikey):
     :return: 回复
     """
     if apikey is None:
-        apikey = API_KEY
+        return "未设置apikey" #apikey = API_KEY
 
     header = {"Content-Type": "application/json",
               "Authorization": "Bearer " + apikey}
@@ -146,7 +146,7 @@ def get_response_stream_generate_from_ChatGPT_API(message_context, apikey, messa
     :return: 回复
     """
     if apikey is None:
-        apikey = API_KEY
+        return "你未设置apikey" #apikey = API_KEY
 
     header = {"Content-Type": "application/json",
               "Authorization": "Bearer " + apikey}
@@ -333,8 +333,9 @@ def get_balance(apikey):
     if apikey is not None:
         head = "###  用户专属api key余额  \n"
     else:
-        head = "### 通用api key  \n"
-        apikey = API_KEY
+        return "你未设置apikey" 
+        #head = "### 通用api key  \n"
+        #apikey = API_KEY
 
     subscription_url = "https://api.openai.com/v1/dashboard/billing/subscription"
     headers = {
